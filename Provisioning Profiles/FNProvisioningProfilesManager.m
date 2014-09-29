@@ -40,8 +40,8 @@
         
         NSMutableArray *array = [NSMutableArray array];
         for (NSString *filename in files) {
-            if ([[filename pathExtension] isEqualToString:@".mobileprovision"] ||
-                [[filename pathExtension] isEqualToString:@".provisionprofile"]) {
+            if ([[filename pathExtension] isEqualToString:@"mobileprovision"] ||
+                [[filename pathExtension] isEqualToString:@"provisionprofile"]) {
                 NSString *path = [self.path stringByAppendingPathComponent:filename];
                 NSDictionary *profile = [FNProvisioningProfile provisioningProfileWithPath:path];
                 [array addObject:profile];
