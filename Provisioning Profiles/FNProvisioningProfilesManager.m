@@ -34,6 +34,7 @@
 }
 
 - (void)reloadProfiles {
+    [self.delegate startUpdatingProfiles:self];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSFileManager *fm = [NSFileManager defaultManager];
         NSArray *files = [fm contentsOfDirectoryAtPath:self.path error:nil];
@@ -47,11 +48,13 @@
                 [array addObject:profile];
             }
         }
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self willChangeValueForKey:@"profiles"];
             self.profiles = array;
             [self didChangeValueForKey:@"profiles"];
+
+            [self.delegate profilesUpdateComplete:self];
         });
     });
 }

@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class FNProvisioningProfilesManager;
+
+@protocol FNProvisioningProfilesManagerDelegate <NSObject>
+- (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager;
+- (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager;
+@end
+
 @interface FNProvisioningProfilesManager : NSObject
 
+@property (assign) id<FNProvisioningProfilesManagerDelegate> delegate;
 @property (nonatomic) NSArray *profiles;
 
 + (FNProvisioningProfilesManager *)sharedManager;

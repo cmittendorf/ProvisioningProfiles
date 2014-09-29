@@ -14,6 +14,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="profilesController" destination="w9r-FN-nna" id="iLi-yT-8ph"/>
+                <outlet property="progressIndicator" destination="bzo-vp-Ych" id="CKJ-dF-4tD"/>
+                <outlet property="summaryLabel" destination="pO5-Jk-ZYG" id="ACm-Go-Ney"/>
                 <outlet property="tableView" destination="pfV-my-fEb" id="s7K-tG-Ogm"/>
                 <outlet property="textView" destination="Ae1-P7-TrN" id="n5V-Oc-6pK"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -359,6 +361,9 @@
                                     </connections>
                                 </textFieldCell>
                             </textField>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-vp-Ych">
+                                <rect key="frame" x="20" y="8" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="pO5-Jk-ZYG" secondAttribute="centerX" id="GEY-3x-I23"/>
@@ -366,6 +371,8 @@
                             <constraint firstItem="pO5-Jk-ZYG" firstAttribute="centerY" secondItem="Ftp-gC-OTf" secondAttribute="centerY" id="UAK-Od-cjO"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pO5-Jk-ZYG" secondAttribute="trailing" constant="20" id="btI-61-cWB"/>
                             <constraint firstItem="pO5-Jk-ZYG" firstAttribute="leading" secondItem="Ftp-gC-OTf" secondAttribute="leading" constant="20" id="cGq-Gb-dD1"/>
+                            <constraint firstAttribute="centerY" secondItem="bzo-vp-Ych" secondAttribute="centerY" id="eCV-Oq-Xaa"/>
+                            <constraint firstItem="bzo-vp-Ych" firstAttribute="leading" secondItem="Ftp-gC-OTf" secondAttribute="leading" constant="20" id="fqs-1q-pdD"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -486,7 +493,7 @@
                     <toolbarItem reference="gRe-mW-G7q"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="674" y="364"/>
+            <point key="canvasLocation" x="619" y="363"/>
         </window>
     </objects>
     <resources>

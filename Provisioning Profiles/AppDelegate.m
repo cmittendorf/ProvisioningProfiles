@@ -12,12 +12,14 @@
 #import "NSTextView+SoftWrap.h"
 
 
-@interface AppDelegate () <NSTableViewDelegate>
+@interface AppDelegate () <NSTableViewDelegate, FNProvisioningProfilesManagerDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSTableView *tableView;
 @property (assign) IBOutlet NSTextView *textView;
+@property (assign) IBOutlet NSTextField *summaryLabel;
 @property (assign) IBOutlet NSArrayController *profilesController;
+@property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 
 @property (nonatomic) FNProvisioningProfilesManager *provisioningProfilesManager;
 
@@ -29,6 +31,7 @@
     [self.textView setWrapsText:NO];
 
     self.provisioningProfilesManager = [FNProvisioningProfilesManager sharedManager];
+    self.provisioningProfilesManager.delegate = self;
     [self.provisioningProfilesManager reloadProfiles];
 }
 
@@ -61,6 +64,18 @@
 
 - (IBAction)reloadProfiles:(id)sender {
     [self.provisioningProfilesManager reloadProfiles];
+}
+
+#pragma mark - FNProvisioningProfilesManagerDelegate
+
+- (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager {
+    [self.summaryLabel setHidden:YES];
+    [self.progressIndicator startAnimation:self];
+}
+
+- (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager {
+    [self.progressIndicator stopAnimation:self];
+    [self.summaryLabel setHidden:NO];
 }
 
 @end
