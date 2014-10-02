@@ -22,7 +22,7 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <arrayController id="w9r-FN-nna" userLabel="Profiles Controller">
+        <arrayController automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="w9r-FN-nna" userLabel="Profiles Controller">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="contentArray" keyPath="provisioningProfilesManager.profiles" id="9nP-QF-ysG"/>
             </connections>
@@ -386,7 +386,7 @@
                     <constraint firstItem="SHY-MX-tOy" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="zLO-DB-93H"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" displayMode="iconAndLabel" sizeMode="regular" id="Rsy-ee-R4g">
+            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="Rsy-ee-R4g">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T6B-Vk-RAl"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="g1l-Fv-0St"/>
@@ -397,7 +397,7 @@
                         <searchField key="view" verticalHuggingPriority="750" id="yKZ-BH-UmA">
                             <rect key="frame" x="0.0" y="14" width="260" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Name" usesSingleLineMode="YES" bezelStyle="round" id="GG0-x9-NrP">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Name" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="GG0-x9-NrP">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
