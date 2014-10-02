@@ -30,6 +30,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self.textView setWrapsText:NO];
 
+    // use the new yosemite title hidden feature
+    if ([self.window respondsToSelector:@selector(setTitleVisibility:)]) {
+        [self.window setTitleVisibility:NSWindowTitleHidden];
+    }
+    
     self.provisioningProfilesManager = [FNProvisioningProfilesManager sharedManager];
     self.provisioningProfilesManager.delegate = self;
     [self.provisioningProfilesManager reloadProfiles];
