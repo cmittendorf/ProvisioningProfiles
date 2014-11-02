@@ -16,7 +16,7 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
 
 @implementation FNProvisioningProfile
 
-+ (NSDictionary *)provisioningProfileWithPath:(NSString *)path {
++ (NSDictionary *)provisioningProfilesWithPath:(NSString *)path {
     NSString *command = @"/usr/bin/security";
     NSArray *arguments = @[@"cms", @"-D", @"-i", path];
     NSMutableDictionary *dict = [[FNProvisioningProfile dictionaryFromCommand:command

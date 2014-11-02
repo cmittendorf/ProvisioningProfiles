@@ -44,7 +44,7 @@
             if ([[filename pathExtension] isEqualToString:@"mobileprovision"] ||
                 [[filename pathExtension] isEqualToString:@"provisionprofile"]) {
                 NSString *path = [self.path stringByAppendingPathComponent:filename];
-                NSDictionary *profile = [FNProvisioningProfile provisioningProfileWithPath:path];
+                NSDictionary *profile = [FNProvisioningProfile provisioningProfilesWithPath:path];
                 [array addObject:profile];
             }
         }

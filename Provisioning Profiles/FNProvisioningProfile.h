@@ -10,6 +10,6 @@
 
 @interface FNProvisioningProfile : NSObject
 
-+ (NSDictionary *)provisioningProfileWithPath:(NSString *)path;
++ (NSDictionary *)provisioningProfilesWithPath:(NSString *)path;
 
 @end
