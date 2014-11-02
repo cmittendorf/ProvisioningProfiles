@@ -12,6 +12,7 @@
 
 @protocol FNProvisioningProfilesManagerDelegate <NSObject>
 - (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager;
+- (void)workingOnProfile:(NSUInteger)currentProfil ofTotal:(NSUInteger)totalProfiles;
 - (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager;
 @end
 

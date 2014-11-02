@@ -37,17 +37,15 @@
     [self.delegate startUpdatingProfiles:self];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSFileManager *fm = [NSFileManager defaultManager];
-        NSArray *files = [fm contentsOfDirectoryAtPath:self.path error:nil];
+        NSArray *files = [[fm contentsOfDirectoryAtPath:self.path error:nil] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.pathExtension == 'mobileprovision' || self.pathExtension == 'provisionprofile'"]];
         
         NSMutableArray *array = [NSMutableArray array];
-        for (NSString *filename in files) {
-            if ([[filename pathExtension] isEqualToString:@"mobileprovision"] ||
-                [[filename pathExtension] isEqualToString:@"provisionprofile"]) {
-                NSString *path = [self.path stringByAppendingPathComponent:filename];
-                NSDictionary *profile = [FNProvisioningProfile provisioningProfilesWithPath:path];
-                [array addObject:profile];
-            }
-        }
+        [files enumerateObjectsUsingBlock:^(NSString *filename, NSUInteger idx, BOOL *stop) {
+            [self.delegate workingOnProfile:idx ofTotal:[files count]];
+            NSString *path = [self.path stringByAppendingPathComponent:filename];
+            NSDictionary *profile = [FNProvisioningProfile provisioningProfilesWithPath:path];
+            [array addObject:profile];
+        }];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [self willChangeValueForKey:@"profiles"];

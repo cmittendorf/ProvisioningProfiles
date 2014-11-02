@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -216,7 +217,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="560"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="560"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,7 +228,7 @@
                             <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="MSd-jS-G90">
                                 <rect key="frame" x="0.0" y="0.0" width="374" height="528"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" id="VRO-GB-HMn">
+                                <clipView key="contentView" misplaced="YES" id="VRO-GB-HMn">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -299,7 +300,7 @@
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="rdW-u3-awr">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rdW-u3-awr">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -361,12 +362,17 @@
                                     </connections>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-vp-Ych">
-                                <rect key="frame" x="20" y="8" width="16" height="16"/>
+                            <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="6" bezeled="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-vp-Ych">
+                                <rect key="frame" x="20" y="6" width="150" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="4Uj-pu-9Ul"/>
+                                </constraints>
                             </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="bzo-vp-Ych" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ftp-gC-OTf" secondAttribute="leading" constant="20" id="8Jr-3j-Adf"/>
                             <constraint firstAttribute="centerX" secondItem="pO5-Jk-ZYG" secondAttribute="centerX" id="GEY-3x-I23"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bzo-vp-Ych" secondAttribute="trailing" constant="20" id="I3V-2O-r5R"/>
                             <constraint firstAttribute="height" constant="32" id="Q5O-HA-aiq"/>
                             <constraint firstItem="pO5-Jk-ZYG" firstAttribute="centerY" secondItem="Ftp-gC-OTf" secondAttribute="centerY" id="UAK-Od-cjO"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pO5-Jk-ZYG" secondAttribute="trailing" constant="20" id="btI-61-cWB"/>
@@ -394,7 +400,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="270" height="22"/>
-                        <searchField key="view" verticalHuggingPriority="750" id="yKZ-BH-UmA">
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="yKZ-BH-UmA">
                             <rect key="frame" x="0.0" y="14" width="260" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Name" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="GG0-x9-NrP">
@@ -497,8 +503,8 @@
         </window>
     </objects>
     <resources>
-        <image name="NSQuickLookTemplate" width="21" height="16"/>
-        <image name="NSRefreshTemplate" width="10" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="trashcan" width="24" height="24"/>
     </resources>
 </document>

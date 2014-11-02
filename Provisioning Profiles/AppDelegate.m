@@ -75,12 +75,18 @@
 
 - (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager {
     [self.summaryLabel setHidden:YES];
-    [self.progressIndicator startAnimation:self];
+    [self.progressIndicator setHidden:NO];
+}
+
+- (void)workingOnProfile:(NSUInteger)currentProfil ofTotal:(NSUInteger)totalProfiles {
+    self.progressIndicator.minValue = 0;
+    self.progressIndicator.maxValue = totalProfiles;
+    [self.progressIndicator setDoubleValue:currentProfil];
 }
 
 - (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager {
-    [self.progressIndicator stopAnimation:self];
     [self.summaryLabel setHidden:NO];
+    [self.progressIndicator setHidden:YES];
 }
 
 @end
