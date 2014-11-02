@@ -17,7 +17,6 @@
 		7074AFFA19D6B4A700A2926B /* CMDraggableGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */; };
 		7074AFFD19D6C99C00A2926B /* trashcan@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */; };
 		7074AFFE19D6C99C00A2926B /* trashcan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 7074AFFC19D6C99C00A2926B /* trashcan.tiff */; };
-		7074B00119D6DEB400A2926B /* dump-ios-mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 7074B00019D6DEB400A2926B /* dump-ios-mobileprovision */; };
 		7074B00219D6DEC600A2926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70146B9C19D55B0200339797 /* MainMenu.xib */; };
 		7074B00419D708EC00A2926B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7074B00319D708EC00A2926B /* Credits.rtf */; };
 /* End PBXBuildFile section */
@@ -49,11 +48,11 @@
 		70146BB719D55C8A00339797 /* FNProvisioningProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNProvisioningProfile.m; sourceTree = "<group>"; };
 		70146BBB19D56FFA00339797 /* NSTextView+SoftWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SoftWrap.h"; sourceTree = "<group>"; };
 		70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SoftWrap.m"; sourceTree = "<group>"; };
+		7016D6331A0521C70034F2B4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDraggableGradientView.h; sourceTree = "<group>"; };
 		7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDraggableGradientView.m; sourceTree = "<group>"; };
 		7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "trashcan@2x.tiff"; sourceTree = "<group>"; };
 		7074AFFC19D6C99C00A2926B /* trashcan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = trashcan.tiff; sourceTree = "<group>"; };
-		7074B00019D6DEB400A2926B /* dump-ios-mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "dump-ios-mobileprovision"; path = "dump-ios-mobileprovision/src/dump-ios-mobileprovision"; sourceTree = "<group>"; };
 		7074B00319D708EC00A2926B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +77,7 @@
 		70146B8719D55B0200339797 = {
 			isa = PBXGroup;
 			children = (
+				7016D6331A0521C70034F2B4 /* README.md */,
 				70146B9219D55B0200339797 /* Provisioning Profiles */,
 				70146BA619D55B0300339797 /* Provisioning ProfilesTests */,
 				70146B9119D55B0200339797 /* Products */,
@@ -116,7 +116,6 @@
 		70146B9319D55B0200339797 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7074B00019D6DEB400A2926B /* dump-ios-mobileprovision */,
 				7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */,
 				7074AFFC19D6C99C00A2926B /* trashcan.tiff */,
 				70146B9419D55B0200339797 /* Info.plist */,
@@ -150,7 +149,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70146BAD19D55B0300339797 /* Build configuration list for PBXNativeTarget "Provisioning Profiles" */;
 			buildPhases = (
-				7074AFFF19D6DE2E00A2926B /* ShellScript */,
 				70146B8C19D55B0200339797 /* Sources */,
 				70146B8D19D55B0200339797 /* Frameworks */,
 				70146B8E19D55B0200339797 /* Resources */,
@@ -228,7 +226,6 @@
 				7074B00219D6DEC600A2926B /* MainMenu.xib in Resources */,
 				7074AFFD19D6C99C00A2926B /* trashcan@2x.tiff in Resources */,
 				70146B9B19D55B0200339797 /* Images.xcassets in Resources */,
-				7074B00119D6DEB400A2926B /* dump-ios-mobileprovision in Resources */,
 				7074B00419D708EC00A2926B /* Credits.rtf in Resources */,
 				7074AFFE19D6C99C00A2926B /* trashcan.tiff in Resources */,
 			);
@@ -242,22 +239,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7074AFFF19D6DE2E00A2926B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd Provisioning\\ Profiles/dump-ios-mobileprovision/ && make";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		70146B8C19D55B0200339797 /* Sources */ = {

@@ -1,5 +1,0 @@
-[submodule "Provisioning Profiles/dump-ios-mobileprovision"]
-	path = Provisioning Profiles/dump-ios-mobileprovision
-	url = https://github.com/vlm/dump-ios-mobileprovision.git
-    fetchRecurseSubmodules = true
-    ignore = dirty

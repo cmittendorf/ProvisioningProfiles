@@ -1,7 +1,7 @@
 Provisioning Profiles.app
 =========================
 
-This applications lists the contents of your provisioning profiles inside the ```~/Library/MobileDevice/Provisioning Profiles``` folder. It displays a profiles contents and allows moving profiles to the trash. It is a GUI for the ```dump-ios-mobileprovision``` command line tool that you can find here: https://github.com/vlm/dump-ios-mobileprovision
+This applications lists all profiles of your provisioning folder at ```~/Library/MobileDevice/Provisioning Profiles```, showing their contents and allowing you to sort them and move profiles to the trash. It is a GUI for the ```security``` command line utility.
 
 ![Provisioning Profiles Screenshot](https://raw.githubusercontent.com/cmittendorf/ProvisioningProfiles/master/Screenshot1.jpg "Screenshot")
 
