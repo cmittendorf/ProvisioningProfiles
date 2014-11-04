@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
@@ -22,7 +22,7 @@
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
-        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="pKl-Gl-g80" customClass="SUUpdater"/>
         <arrayController automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="w9r-FN-nna" userLabel="Profiles Controller">
             <connections>
                 <binding destination="Voe-Tx-rLC" name="contentArray" keyPath="provisioningProfilesManager.profiles" id="9nP-QF-ysG"/>
@@ -38,6 +38,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="2LA-UK-d0q"/>
+                            <menuItem title="Check for Updates…" id="GgO-b0-1lP">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="pKl-Gl-g80" id="AEO-Rn-ecB"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -216,17 +223,17 @@
         <window title="Provisioning Profiles" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="mainWindow" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
-            <rect key="contentRect" x="335" y="390" width="800" height="560"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="contentRect" x="335" y="390" width="770" height="413"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="560"/>
+                <rect key="frame" x="0.0" y="0.0" width="770" height="413"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView focusRingType="none" autosaveName="splitDivider" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-MX-tOy">
-                        <rect key="frame" x="0.0" y="32" width="800" height="528"/>
+                        <rect key="frame" x="0.0" y="32" width="770" height="381"/>
                         <subviews>
                             <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="MSd-jS-G90">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="528"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="381"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" misplaced="YES" id="VRO-GB-HMn">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
@@ -310,7 +317,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <scrollView focusRingType="none" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QRq-6l-rG9">
-                                <rect key="frame" x="375" y="0.0" width="425" height="528"/>
+                                <rect key="frame" x="375" y="0.0" width="395" height="381"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="WkW-yc-Qql">
                                     <rect key="frame" x="1" y="1" width="238" height="133"/>
@@ -320,10 +327,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="238" height="630"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="425" height="528"/>
+                                            <size key="minSize" width="395" height="381"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="425" height="528"/>
+                                            <size key="minSize" width="395" height="381"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -345,10 +352,10 @@
                         </holdingPriorities>
                     </splitView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ftp-gC-OTf" customClass="CMDraggableGradientView">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="770" height="32"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pO5-Jk-ZYG">
-                                <rect key="frame" x="18" y="9" width="764" height="14"/>
+                                <rect key="frame" x="18" y="9" width="734" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="qWC-OK-ZpX">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -499,7 +506,7 @@
                     <toolbarItem reference="gRe-mW-G7q"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="619" y="363"/>
+            <point key="canvasLocation" x="627" y="255.5"/>
         </window>
     </objects>
     <resources>
