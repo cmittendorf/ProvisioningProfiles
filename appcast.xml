@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Provisioning Profiles.app Versions</title>
+        <link>https://raw.githubusercontent.com/cmittendorf/ProvisioningProfiles/master/AppCast.xml</link>
+        <description>Most recent changes for Provisioning Profiles.app with links to updates.</description>
+        <language>en</language>
+
+        <item>
+            <title>Version 0.9.0</title>
+            <description><![CDATA[
+                <h2>New Features</h2>
+                <p>This is the initial release of ProvisioningProfiles.app.</p>
+                <h2>Bugfixes</h2>
+                <p>none</p>
+            ]]>
+            </description>
+            <pubDate>Wed, 28 Sep 2014 14:00:00 +0000</pubDate>
+            <enclosure 
+                url="https://github.com/cmittendorf/ProvisioningProfiles/releases/download/0.9.0/ProvisioningProfiles-0.9.0.zip" 
+                sparkle:version="2.0" length="1178543" type="application/octet-stream" />
+            <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
+            <title>Version 0.9.1</title>
+            <description><![CDATA[
+                <h2>New Features</h2>
+                <ul>
+                    <li>removed external tool dependency by switching to the security command</li>
+                    <li>updated progress indicator to show the number of steps left</li> 
+                    <li>added Sparkle framework for automatic updates</li>
+                </ul>
+                <h2>Bugfixes</h2>
+                <p>none</p>
+            ]]>
+            </description>
+            <pubDate>Wed, 04 Nov 2014 12:00:00 +0000</pubDate>
+            <enclosure 
+                url="https://github.com/cmittendorf/ProvisioningProfiles/releases/download/0.9.1/ProvisioningProfiles-0.9.1.zip" 
+                sparkle:version="2.0" length="2219578" type="application/octet-stream" />
+            <sparkle:minimumSystemVersion>10.9</sparkle:minimumSystemVersion>
+        </item>
+
+    </channel>
+</rss>
