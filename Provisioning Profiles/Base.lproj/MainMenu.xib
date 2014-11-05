@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="profilesController" destination="w9r-FN-nna" id="iLi-yT-8ph"/>
                 <outlet property="progressIndicator" destination="bzo-vp-Ych" id="CKJ-dF-4tD"/>
+                <outlet property="reloadProfilesButton" destination="SWb-UE-V2J" id="GHj-PU-yfh"/>
                 <outlet property="summaryLabel" destination="pO5-Jk-ZYG" id="ACm-Go-Ney"/>
                 <outlet property="tableView" destination="pfV-my-fEb" id="s7K-tG-Ogm"/>
                 <outlet property="textView" destination="Ae1-P7-TrN" id="n5V-Oc-6pK"/>

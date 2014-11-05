@@ -20,6 +20,7 @@
 @property (assign) IBOutlet NSTextField *summaryLabel;
 @property (assign) IBOutlet NSArrayController *profilesController;
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
+@property (assign) IBOutlet NSButton *reloadProfilesButton;
 
 @property (nonatomic) FNProvisioningProfilesManager *provisioningProfilesManager;
 
@@ -71,11 +72,16 @@
     [self.provisioningProfilesManager reloadProfiles];
 }
 
+- (void)updateUIStatusDisabled:(BOOL)disabled {
+    [self.summaryLabel setHidden:disabled];
+    [self.progressIndicator setHidden:!disabled];
+    [self.reloadProfilesButton setEnabled:!disabled];
+}
+
 #pragma mark - FNProvisioningProfilesManagerDelegate
 
 - (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager {
-    [self.summaryLabel setHidden:YES];
-    [self.progressIndicator setHidden:NO];
+    [self updateUIStatusDisabled:YES];
 }
 
 - (void)workingOnProfile:(NSUInteger)currentProfil ofTotal:(NSUInteger)totalProfiles {
@@ -85,8 +91,7 @@
 }
 
 - (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager {
-    [self.summaryLabel setHidden:NO];
-    [self.progressIndicator setHidden:YES];
+    [self updateUIStatusDisabled:NO];
 }
 
 @end
