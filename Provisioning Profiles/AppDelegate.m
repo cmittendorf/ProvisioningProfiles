@@ -68,6 +68,17 @@
     [self.profilesController removeObject:profile];
 }
 
+- (IBAction)updateColumnVisibility:(id)sender {
+    NSMenuItem *menuItem = (NSMenuItem *)sender;
+    menuItem.state = menuItem.state == NSOnState ? NSOffState : NSOnState;
+    for (NSTableColumn *column in [self.tableView tableColumns]) {
+        if ([column.title isEqualToString:menuItem.title]) {
+            column.hidden = (menuItem.state != NSOnState);
+            break;
+        }
+    }
+}
+
 - (IBAction)reloadProfiles:(id)sender {
     [self.provisioningProfilesManager reloadProfiles];
 }

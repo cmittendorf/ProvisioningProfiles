@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
@@ -225,12 +225,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <rect key="contentRect" x="335" y="390" width="770" height="413"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="770" height="413"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <splitView focusRingType="none" autosaveName="splitDivider" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-MX-tOy">
+                    <splitView focusRingType="none" autosaveName="splitDivider" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-MX-tOy">
                         <rect key="frame" x="0.0" y="32" width="770" height="381"/>
                         <subviews>
                             <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="MSd-jS-G90">
@@ -265,7 +265,7 @@
                                                     </connections>
                                                 </tableColumn>
                                                 <tableColumn editable="NO" width="146.3828125" minWidth="10" maxWidth="3.4028234663852886e+38" id="RIB-So-Jb4">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="TeamName">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Team Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -280,8 +280,8 @@
                                                         <binding destination="w9r-FN-nna" name="value" keyPath="arrangedObjects.TeamName" id="i6P-u6-k1y"/>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn editable="NO" width="59" minWidth="10" maxWidth="3.4028234663852886e+38" id="BrE-B2-QMu">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="AppIDName">
+                                                <tableColumn editable="NO" width="79" minWidth="10" maxWidth="3.4028234663852886e+38" id="BrE-B2-QMu">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="App ID Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -304,7 +304,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="JGh-s3-No8">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="JGh-s3-No8">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -315,10 +315,13 @@
                                 <tableHeaderView key="headerView" id="h8B-x5-mcs">
                                     <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <connections>
+                                        <outlet property="menu" destination="uV0-fk-xY9" id="kKS-Ja-9qh"/>
+                                    </connections>
                                 </tableHeaderView>
                             </scrollView>
                             <scrollView focusRingType="none" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QRq-6l-rG9">
-                                <rect key="frame" x="375" y="0.0" width="395" height="381"/>
+                                <rect key="frame" x="384" y="0.0" width="386" height="381"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="WkW-yc-Qql">
                                     <rect key="frame" x="1" y="1" width="238" height="133"/>
@@ -328,10 +331,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="238" height="630"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="395" height="381"/>
+                                            <size key="minSize" width="386" height="381"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="395" height="381"/>
+                                            <size key="minSize" width="386" height="381"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -400,7 +403,7 @@
                     <constraint firstItem="SHY-MX-tOy" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="zLO-DB-93H"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="Rsy-ee-R4g">
+            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" displayMode="iconAndLabel" sizeMode="regular" id="Rsy-ee-R4g">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T6B-Vk-RAl"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="g1l-Fv-0St"/>
@@ -509,6 +512,29 @@
             </toolbar>
             <point key="canvasLocation" x="627" y="255.5"/>
         </window>
+        <menu id="uV0-fk-xY9">
+            <items>
+                <menuItem title="Name" state="on" id="nMX-NE-Jin">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateColumnVisibility:" target="Voe-Tx-rLC" id="zXx-tK-RHF"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Team Name" state="on" id="DxP-z6-uPg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateColumnVisibility:" target="Voe-Tx-rLC" id="nos-4I-5tu"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="App ID Name" state="on" id="D53-Hv-mTu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateColumnVisibility:" target="Voe-Tx-rLC" id="9QY-3x-MeN"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="491" y="-136.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
