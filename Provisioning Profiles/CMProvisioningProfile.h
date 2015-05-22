@@ -1,5 +1,5 @@
 //
-//  FNProvisioningProfile.h
+//  CMProvisioningProfile.h
 //  Provisioning Profiles
 //
 //  Created by Christian Mittendorf on 26/09/14.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FNProvisioningProfile : NSObject
+@interface CMProvisioningProfile : NSObject
 
-+ (NSDictionary *)provisioningProfilesWithPath:(NSString *)path;
++ (CMProvisioningProfile *)provisioningProfilesWithPath:(NSString *)path;
 
 @end

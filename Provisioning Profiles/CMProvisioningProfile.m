@@ -1,25 +1,36 @@
 //
-//  FNProvisioningProfile.m
+//  CMProvisioningProfile.m
 //  Provisioning Profiles
 //
 //  Created by Christian Mittendorf on 26/09/14.
-//  Copyright (c) 2014 freenet.de GmbH. All rights reserved.
+//  Copyright (c) 2014 Christian Mittendorf. All rights reserved.
 //
 
-#import "FNProvisioningProfile.h"
+#import "CMProvisioningProfile.h"
 
 NSString * const START_CERT = @"-----BEGIN CERTIFICATE-----";
 NSString * const END_CERT = @"-----END CERTIFICATE-----";
 
-@interface FNProvisioningProfile ()
+@interface CMProvisioningProfile ()
+@property (strong) NSDictionary *dict;
 @end
 
-@implementation FNProvisioningProfile
+@implementation CMProvisioningProfile
 
-+ (NSDictionary *)provisioningProfilesWithPath:(NSString *)path {
+- (id)valueForKey:(NSString *)key {
+    return [self.dict valueForKey:key];
+}
+
+- (NSString *)description {
+    return [self.dict description];
+}
+
++ (CMProvisioningProfile *)provisioningProfilesWithPath:(NSString *)path {
+    CMProvisioningProfile *profile = [[CMProvisioningProfile alloc] init];
+
     NSString *command = @"/usr/bin/security";
     NSArray *arguments = @[@"cms", @"-D", @"-i", path];
-    NSMutableDictionary *dict = [[FNProvisioningProfile dictionaryFromCommand:command
+    NSMutableDictionary *dict = [[CMProvisioningProfile dictionaryFromCommand:command
                                                                 withArguments:arguments] mutableCopy];
     [dict setObject:path forKey:@"path"];
     [dict setObject:[path lastPathComponent] forKey:@"filename"];
@@ -39,7 +50,7 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
         [pem writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:&error];
         command = @"/usr/bin/openssl";
         arguments = @[@"x509", @"-text", @"-in", path];
-        NSString *cert = [FNProvisioningProfile stringFromCommand:command
+        NSString *cert = [CMProvisioningProfile stringFromCommand:command
                                                     withArguments:arguments];
         
         NSMutableDictionary *certDict = [NSMutableDictionary dictionary];
@@ -55,7 +66,10 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
         [certificates addObject:certDict];
     }
     [dict setObject:certificates forKey:@"DeveloperCertificates"];
-    return dict;
+
+    profile.dict = dict;
+    
+    return profile;
 }
 
 + (NSData *)runCommand:(NSString *)command withArguments:(NSArray *)args {
@@ -71,7 +85,7 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
 }
 
 + (NSDictionary *)dictionaryFromCommand:(NSString *)command withArguments:(NSArray *)args {
-    NSData *data = [FNProvisioningProfile runCommand:command withArguments:args];
+    NSData *data = [CMProvisioningProfile runCommand:command withArguments:args];
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
     NSDictionary *dict = (NSDictionary*)[NSPropertyListSerialization
@@ -83,7 +97,7 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
 }
 
 + (NSString *)stringFromCommand:(NSString *)command withArguments:(NSArray *)args {
-    NSData *data = [FNProvisioningProfile runCommand:command withArguments:args];
+    NSData *data = [CMProvisioningProfile runCommand:command withArguments:args];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 

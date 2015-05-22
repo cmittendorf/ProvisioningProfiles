@@ -3,18 +3,19 @@
 //  Provisioning Profiles
 //
 //  Created by Christian Mittendorf on 26/09/14.
-//  Copyright (c) 2014 freenet.de GmbH. All rights reserved.
+//  Copyright (c) 2014 Christian Mittendorf. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "FNProvisioningProfilesManager.h"
-#import "FNProvisioningProfile.h"
+#import "CMProvisioningProfilesManager.h"
+#import "CMProvisioningProfile.h"
 #import "NSTextView+SoftWrap.h"
 
 
-@interface AppDelegate () <NSTableViewDelegate, FNProvisioningProfilesManagerDelegate>
+@interface AppDelegate () <NSTableViewDelegate, CMProvisioningProfilesManagerDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSWindow *progressWindow;
 @property (assign) IBOutlet NSTableView *tableView;
 @property (assign) IBOutlet NSTextView *textView;
 @property (assign) IBOutlet NSTextField *summaryLabel;
@@ -22,7 +23,7 @@
 @property (assign) IBOutlet NSProgressIndicator *progressIndicator;
 @property (assign) IBOutlet NSButton *reloadProfilesButton;
 
-@property (nonatomic) FNProvisioningProfilesManager *provisioningProfilesManager;
+@property (nonatomic) CMProvisioningProfilesManager *provisioningProfilesManager;
 
 @end
 
@@ -36,7 +37,7 @@
         [self.window setTitleVisibility:NSWindowTitleHidden];
     }
     
-    self.provisioningProfilesManager = [FNProvisioningProfilesManager sharedManager];
+    self.provisioningProfilesManager = [CMProvisioningProfilesManager sharedManager];
     self.provisioningProfilesManager.delegate = self;
     [self.provisioningProfilesManager reloadProfiles];
 }
@@ -56,14 +57,14 @@
 }
 
 - (IBAction)showSelectedProfileInFinder:(id)sender {
-    NSDictionary *profile = [[self.profilesController selectedObjects] firstObject];
-    NSString *path = profile[@"path"];
+    CMProvisioningProfile *profile = [[self.profilesController selectedObjects] firstObject];
+    NSString *path = [profile valueForKey:@"path"];
     [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:nil];
 }
 
 - (IBAction)moveSelectedProfileToTrash:(id)sender {
-    NSDictionary *profile = [[self.profilesController selectedObjects] firstObject];
-    NSURL *url = [NSURL fileURLWithPath:profile[@"path"]];
+    CMProvisioningProfile *profile = [[self.profilesController selectedObjects] firstObject];
+    NSURL *url = [NSURL fileURLWithPath:[profile valueForKey:@"path"]];
     [[NSFileManager defaultManager] trashItemAtURL:url resultingItemURL:nil error:nil];
     [self.profilesController removeObject:profile];
 }
@@ -84,24 +85,30 @@
 }
 
 - (void)updateUIStatusDisabled:(BOOL)disabled {
-    [self.summaryLabel setHidden:disabled];
-    [self.progressIndicator setHidden:!disabled];
+
+    if (disabled) {
+        self.progressIndicator.minValue = 0;
+        self.progressIndicator.maxValue = 0;
+        [self.window beginSheet:self.progressWindow completionHandler:nil];
+    } else {
+        [self.window endSheet:self.progressWindow];
+    }
+
     [self.reloadProfilesButton setEnabled:!disabled];
 }
 
 #pragma mark - FNProvisioningProfilesManagerDelegate
 
-- (void)startUpdatingProfiles:(FNProvisioningProfilesManager *)provisioningProfilesManager {
+- (void)startUpdatingProfiles:(CMProvisioningProfilesManager *)provisioningProfilesManager {
     [self updateUIStatusDisabled:YES];
 }
 
 - (void)workingOnProfile:(NSUInteger)currentProfil ofTotal:(NSUInteger)totalProfiles {
-    self.progressIndicator.minValue = 0;
     self.progressIndicator.maxValue = totalProfiles;
-    [self.progressIndicator setDoubleValue:currentProfil];
+    self.progressIndicator.doubleValue = currentProfil;
 }
 
-- (void)profilesUpdateComplete:(FNProvisioningProfilesManager *)provisioningProfilesManager {
+- (void)profilesUpdateComplete:(CMProvisioningProfilesManager *)provisioningProfilesManager {
     [self updateUIStatusDisabled:NO];
 }
 

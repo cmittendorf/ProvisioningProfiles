@@ -11,14 +11,12 @@
 		70146B9919D55B0200339797 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146B9819D55B0200339797 /* AppDelegate.m */; };
 		70146B9B19D55B0200339797 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70146B9A19D55B0200339797 /* Images.xcassets */; };
 		70146BAA19D55B0300339797 /* Provisioning_ProfilesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BA919D55B0300339797 /* Provisioning_ProfilesTests.m */; };
-		70146BB519D55B2A00339797 /* FNProvisioningProfilesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BB419D55B2A00339797 /* FNProvisioningProfilesManager.m */; };
-		70146BB819D55C8A00339797 /* FNProvisioningProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BB719D55C8A00339797 /* FNProvisioningProfile.m */; };
+		70146BB519D55B2A00339797 /* CMProvisioningProfilesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BB419D55B2A00339797 /* CMProvisioningProfilesManager.m */; };
+		70146BB819D55C8A00339797 /* CMProvisioningProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BB719D55C8A00339797 /* CMProvisioningProfile.m */; };
 		70146BBD19D56FFA00339797 /* NSTextView+SoftWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */; };
 		7016D6371A06F05B0034F2B4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7016D6351A06F0490034F2B4 /* Sparkle.framework */; };
 		7016D6391A06F09A0034F2B4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7016D6351A06F0490034F2B4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7074AFFA19D6B4A700A2926B /* CMDraggableGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */; };
-		7074AFFD19D6C99C00A2926B /* trashcan@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */; };
-		7074AFFE19D6C99C00A2926B /* trashcan.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 7074AFFC19D6C99C00A2926B /* trashcan.tiff */; };
 		7074B00219D6DEC600A2926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70146B9C19D55B0200339797 /* MainMenu.xib */; };
 		7074B00419D708EC00A2926B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7074B00319D708EC00A2926B /* Credits.rtf */; };
 /* End PBXBuildFile section */
@@ -57,18 +55,16 @@
 		70146BA319D55B0200339797 /* Provisioning ProfilesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Provisioning ProfilesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70146BA819D55B0300339797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70146BA919D55B0300339797 /* Provisioning_ProfilesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Provisioning_ProfilesTests.m; sourceTree = "<group>"; };
-		70146BB319D55B2A00339797 /* FNProvisioningProfilesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNProvisioningProfilesManager.h; sourceTree = "<group>"; };
-		70146BB419D55B2A00339797 /* FNProvisioningProfilesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNProvisioningProfilesManager.m; sourceTree = "<group>"; };
-		70146BB619D55C8A00339797 /* FNProvisioningProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNProvisioningProfile.h; sourceTree = "<group>"; };
-		70146BB719D55C8A00339797 /* FNProvisioningProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNProvisioningProfile.m; sourceTree = "<group>"; };
+		70146BB319D55B2A00339797 /* CMProvisioningProfilesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProvisioningProfilesManager.h; sourceTree = "<group>"; };
+		70146BB419D55B2A00339797 /* CMProvisioningProfilesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProvisioningProfilesManager.m; sourceTree = "<group>"; };
+		70146BB619D55C8A00339797 /* CMProvisioningProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMProvisioningProfile.h; sourceTree = "<group>"; };
+		70146BB719D55C8A00339797 /* CMProvisioningProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMProvisioningProfile.m; sourceTree = "<group>"; };
 		70146BBB19D56FFA00339797 /* NSTextView+SoftWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SoftWrap.h"; sourceTree = "<group>"; };
 		70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SoftWrap.m"; sourceTree = "<group>"; };
 		7016D6331A0521C70034F2B4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		7016D6351A06F0490034F2B4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDraggableGradientView.h; sourceTree = "<group>"; };
 		7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDraggableGradientView.m; sourceTree = "<group>"; };
-		7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "trashcan@2x.tiff"; sourceTree = "<group>"; };
-		7074AFFC19D6C99C00A2926B /* trashcan.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = trashcan.tiff; sourceTree = "<group>"; };
 		7074B00319D708EC00A2926B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,10 +111,10 @@
 			children = (
 				70146B9719D55B0200339797 /* AppDelegate.h */,
 				70146B9819D55B0200339797 /* AppDelegate.m */,
-				70146BB319D55B2A00339797 /* FNProvisioningProfilesManager.h */,
-				70146BB419D55B2A00339797 /* FNProvisioningProfilesManager.m */,
-				70146BB619D55C8A00339797 /* FNProvisioningProfile.h */,
-				70146BB719D55C8A00339797 /* FNProvisioningProfile.m */,
+				70146BB319D55B2A00339797 /* CMProvisioningProfilesManager.h */,
+				70146BB419D55B2A00339797 /* CMProvisioningProfilesManager.m */,
+				70146BB619D55C8A00339797 /* CMProvisioningProfile.h */,
+				70146BB719D55C8A00339797 /* CMProvisioningProfile.m */,
 				70146BBB19D56FFA00339797 /* NSTextView+SoftWrap.h */,
 				70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */,
 				7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */,
@@ -133,8 +129,6 @@
 		70146B9319D55B0200339797 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7074AFFB19D6C99C00A2926B /* trashcan@2x.tiff */,
-				7074AFFC19D6C99C00A2926B /* trashcan.tiff */,
 				70146B9419D55B0200339797 /* Info.plist */,
 				70146B9519D55B0200339797 /* main.m */,
 				7074B00319D708EC00A2926B /* Credits.rtf */,
@@ -251,10 +245,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7074B00219D6DEC600A2926B /* MainMenu.xib in Resources */,
-				7074AFFD19D6C99C00A2926B /* trashcan@2x.tiff in Resources */,
 				70146B9B19D55B0200339797 /* Images.xcassets in Resources */,
 				7074B00419D708EC00A2926B /* Credits.rtf in Resources */,
-				7074AFFE19D6C99C00A2926B /* trashcan.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +266,9 @@
 			files = (
 				7074AFFA19D6B4A700A2926B /* CMDraggableGradientView.m in Sources */,
 				70146BBD19D56FFA00339797 /* NSTextView+SoftWrap.m in Sources */,
-				70146BB519D55B2A00339797 /* FNProvisioningProfilesManager.m in Sources */,
+				70146BB519D55B2A00339797 /* CMProvisioningProfilesManager.m in Sources */,
 				70146B9919D55B0200339797 /* AppDelegate.m in Sources */,
-				70146BB819D55C8A00339797 /* FNProvisioningProfile.m in Sources */,
+				70146BB819D55C8A00339797 /* CMProvisioningProfile.m in Sources */,
 				70146B9619D55B0200339797 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
