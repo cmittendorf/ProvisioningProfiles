@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface CMProvisioningProfile : NSObject
-
+@property (strong) NSDictionary *dict;
 + (CMProvisioningProfile *)provisioningProfilesWithPath:(NSString *)path;
-
 @end

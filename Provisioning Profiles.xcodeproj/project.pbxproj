@@ -19,6 +19,10 @@
 		7074AFFA19D6B4A700A2926B /* CMDraggableGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */; };
 		7074B00219D6DEC600A2926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70146B9C19D55B0200339797 /* MainMenu.xib */; };
 		7074B00419D708EC00A2926B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7074B00319D708EC00A2926B /* Credits.rtf */; };
+		707E38F11B10982D00A60BE8 /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 707E38F01B10982D00A60BE8 /* NSDictionary+JSON.m */; };
+		707E38F41B109A2300A60BE8 /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = 707E38F31B109A2300A60BE8 /* NSDate+ISO8601.m */; };
+		707E38F71B10A1F600A60BE8 /* NSTask+SimpleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 707E38F61B10A1F600A60BE8 /* NSTask+SimpleCommand.m */; };
+		70D9DF361B10D33B0035445D /* CMQuickLookTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D9DF351B10D33B0035445D /* CMQuickLookTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,14 @@
 		7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDraggableGradientView.h; sourceTree = "<group>"; };
 		7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDraggableGradientView.m; sourceTree = "<group>"; };
 		7074B00319D708EC00A2926B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		707E38EF1B10982D00A60BE8 /* NSDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSON.h"; sourceTree = "<group>"; };
+		707E38F01B10982D00A60BE8 /* NSDictionary+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSON.m"; sourceTree = "<group>"; };
+		707E38F21B109A2300A60BE8 /* NSDate+ISO8601.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ISO8601.h"; sourceTree = "<group>"; };
+		707E38F31B109A2300A60BE8 /* NSDate+ISO8601.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ISO8601.m"; sourceTree = "<group>"; };
+		707E38F51B10A1F600A60BE8 /* NSTask+SimpleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+SimpleCommand.h"; sourceTree = "<group>"; };
+		707E38F61B10A1F600A60BE8 /* NSTask+SimpleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+SimpleCommand.m"; sourceTree = "<group>"; };
+		70D9DF341B10D33B0035445D /* CMQuickLookTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMQuickLookTableView.h; sourceTree = "<group>"; };
+		70D9DF351B10D33B0035445D /* CMQuickLookTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMQuickLookTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +127,8 @@
 				70146BB419D55B2A00339797 /* CMProvisioningProfilesManager.m */,
 				70146BB619D55C8A00339797 /* CMProvisioningProfile.h */,
 				70146BB719D55C8A00339797 /* CMProvisioningProfile.m */,
-				70146BBB19D56FFA00339797 /* NSTextView+SoftWrap.h */,
-				70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */,
-				7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */,
-				7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */,
+				70CDCCFC1B10F99900ED3EC3 /* Classes */,
+				70CDCCFB1B10F97800ED3EC3 /* Categories */,
 				70146B9A19D55B0200339797 /* Images.xcassets */,
 				70146B9C19D55B0200339797 /* MainMenu.xib */,
 				70146B9319D55B0200339797 /* Supporting Files */,
@@ -160,6 +170,32 @@
 				7016D6351A06F0490034F2B4 /* Sparkle.framework */,
 			);
 			name = Sparkle;
+			sourceTree = "<group>";
+		};
+		70CDCCFB1B10F97800ED3EC3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				707E38EF1B10982D00A60BE8 /* NSDictionary+JSON.h */,
+				707E38F01B10982D00A60BE8 /* NSDictionary+JSON.m */,
+				707E38F21B109A2300A60BE8 /* NSDate+ISO8601.h */,
+				707E38F31B109A2300A60BE8 /* NSDate+ISO8601.m */,
+				707E38F51B10A1F600A60BE8 /* NSTask+SimpleCommand.h */,
+				707E38F61B10A1F600A60BE8 /* NSTask+SimpleCommand.m */,
+				70146BBB19D56FFA00339797 /* NSTextView+SoftWrap.h */,
+				70146BBC19D56FFA00339797 /* NSTextView+SoftWrap.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		70CDCCFC1B10F99900ED3EC3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7074AFF819D6B4A700A2926B /* CMDraggableGradientView.h */,
+				7074AFF919D6B4A700A2926B /* CMDraggableGradientView.m */,
+				70D9DF341B10D33B0035445D /* CMQuickLookTableView.h */,
+				70D9DF351B10D33B0035445D /* CMQuickLookTableView.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +243,9 @@
 		70146B8819D55B0200339797 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CM;
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "freenet.de GmbH";
+				ORGANIZATIONNAME = "Christian Mittendorf";
 				TargetAttributes = {
 					70146B8F19D55B0200339797 = {
 						CreatedOnToolsVersion = 6.0;
@@ -267,9 +304,13 @@
 				7074AFFA19D6B4A700A2926B /* CMDraggableGradientView.m in Sources */,
 				70146BBD19D56FFA00339797 /* NSTextView+SoftWrap.m in Sources */,
 				70146BB519D55B2A00339797 /* CMProvisioningProfilesManager.m in Sources */,
+				707E38F11B10982D00A60BE8 /* NSDictionary+JSON.m in Sources */,
+				70D9DF361B10D33B0035445D /* CMQuickLookTableView.m in Sources */,
 				70146B9919D55B0200339797 /* AppDelegate.m in Sources */,
+				707E38F71B10A1F600A60BE8 /* NSTask+SimpleCommand.m in Sources */,
 				70146BB819D55C8A00339797 /* CMProvisioningProfile.m in Sources */,
 				70146B9619D55B0200339797 /* main.m in Sources */,
+				707E38F41B109A2300A60BE8 /* NSDate+ISO8601.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

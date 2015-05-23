@@ -7,12 +7,13 @@
 //
 
 #import "CMProvisioningProfile.h"
+#import "NSTask+SimpleCommand.h"
 
 NSString * const START_CERT = @"-----BEGIN CERTIFICATE-----";
 NSString * const END_CERT = @"-----END CERTIFICATE-----";
 
 @interface CMProvisioningProfile ()
-@property (strong) NSDictionary *dict;
+
 @end
 
 @implementation CMProvisioningProfile
@@ -54,8 +55,7 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
                                                     withArguments:arguments];
         
         NSMutableDictionary *certDict = [NSMutableDictionary dictionary];
-        [certDict setObject:cert
-                     forKey:@"cert"];
+        [certDict setObject:cert forKey:@"cert"];
 
         NSTextCheckingResult *match = [regEx firstMatchInString:cert options:0 range:NSMakeRange(0, [cert length])];
         if (match.range.location != NSNotFound && match.numberOfRanges == 2) {
@@ -72,20 +72,8 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
     return profile;
 }
 
-+ (NSData *)runCommand:(NSString *)command withArguments:(NSArray *)args {
-    NSTask *task = [[NSTask alloc] init];
-    NSPipe *newPipe = [NSPipe pipe];
-    NSFileHandle *readHandle = [newPipe fileHandleForReading];
-    [task setLaunchPath:command];
-    [task setArguments:args];
-    [task setStandardOutput:newPipe];
-    [task setStandardError:newPipe];
-    [task launch];
-    return [readHandle readDataToEndOfFile];
-}
-
 + (NSDictionary *)dictionaryFromCommand:(NSString *)command withArguments:(NSArray *)args {
-    NSData *data = [CMProvisioningProfile runCommand:command withArguments:args];
+    NSData *data = [NSTask runCommand:command withArguments:args];
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
     NSDictionary *dict = (NSDictionary*)[NSPropertyListSerialization
@@ -97,8 +85,32 @@ NSString * const END_CERT = @"-----END CERTIFICATE-----";
 }
 
 + (NSString *)stringFromCommand:(NSString *)command withArguments:(NSArray *)args {
-    NSData *data = [CMProvisioningProfile runCommand:command withArguments:args];
+    NSData *data = [NSTask runCommand:command withArguments:args];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+- (BOOL)isEqual:(id)other {
+    if ([other isKindOfClass:[CMProvisioningProfile class]]) {
+        NSString *myPath = [self.dict objectForKey:@"path"];
+        NSString *otherPath = [[(CMProvisioningProfile *)other dict] objectForKey:@"path"];
+        return [otherPath isEqualToString:myPath];
+    } else {
+        return NO;
+    }
+}
+
+- (NSUInteger)hash {
+    return (NSUInteger)self;
+}
+
+#pragma mark - QLPreviewItem
+
+- (NSURL *)previewItemURL {
+    return [NSURL fileURLWithPath:[self.dict objectForKey:@"path"]];
+}
+
+- (NSString *)previewItemTitle {
+    return [self.dict objectForKey:@"Name"];
 }
 
 @end

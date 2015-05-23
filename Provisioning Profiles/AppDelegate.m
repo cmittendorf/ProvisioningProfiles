@@ -51,9 +51,9 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    self.textView.font = [NSFont fontWithName:@"Menlo" size:11];
-    NSDictionary *profile = [[self.profilesController selectedObjects] firstObject];
-    self.textView.string = profile ? [profile description] : @"";
+    self.textView.font = [NSFont fontWithName:@"Menlo" size:12];
+    CMProvisioningProfile *profile = [[self.profilesController selectedObjects] firstObject];
+    self.textView.string = [profile.dict asJSONString];
 }
 
 - (IBAction)showSelectedProfileInFinder:(id)sender {

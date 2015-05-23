@@ -9,9 +9,9 @@
 #import "CMProvisioningProfilesManager.h"
 #import "CMProvisioningProfile.h"
 
+NSString * const kCMProvisioningProfilesPath = @"kCMProvisioningProfilesPath";
+
 @interface CMProvisioningProfilesManager ()
-@property (nonatomic) NSString *path;
-@property (nonatomic) dispatch_queue_t background_queue;
 @end
 
 @implementation CMProvisioningProfilesManager
@@ -28,8 +28,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.background_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-        self.path = [@"~/Library/MobileDevice/Provisioning Profiles/" stringByExpandingTildeInPath];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{kCMProvisioningProfilesPath : @"~/Library/MobileDevice/Provisioning Profiles/"}];
         self.profiles = @[];
     }
     return self;
@@ -37,26 +36,28 @@
 
 - (void)reloadProfiles {
     [self.delegate startUpdatingProfiles:self];
-    dispatch_async(self.background_queue, ^{
-        NSFileManager *fm = [NSFileManager defaultManager];
-        dispatch_semaphore_t addSemaphore = dispatch_semaphore_create(1);
-
-        NSArray *files = [[fm contentsOfDirectoryAtPath:self.path error:nil] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.pathExtension == 'mobileprovision' || self.pathExtension == 'provisionprofile'"]];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSString *path = [[[NSUserDefaults standardUserDefaults] objectForKey:kCMProvisioningProfilesPath] stringByExpandingTildeInPath];
         
-        NSMutableArray *array = [NSMutableArray array];
-        [files enumerateObjectsWithOptions:NSEnumerationConcurrent
-                                usingBlock:^(NSString *filename, NSUInteger idx, BOOL *stop)
-        {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.pathExtension == 'mobileprovision' || self.pathExtension == 'provisionprofile'"];
+        NSArray *files = [[fm contentsOfDirectoryAtPath:path error:nil] filteredArrayUsingPredicate:predicate];
+        NSUInteger total = [files count];
+        
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:total];
+
+        // I tried to run this block concurrently, but that does make your system run amok
+        // due to the shell commands executed, which do not like to be run simultanously.
+        [files enumerateObjectsUsingBlock:^(NSString *filename, NSUInteger idx, BOOL *stop) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate workingOnProfile:idx ofTotal:[files count]];
+                [self.delegate workingOnProfile:idx ofTotal:total];
             });
             
-            NSString *path = [self.path stringByAppendingPathComponent:filename];
-            CMProvisioningProfile *profile = [CMProvisioningProfile provisioningProfilesWithPath:path];
+            NSString *profilePath = [path stringByAppendingPathComponent:filename];
+            CMProvisioningProfile *profile = [CMProvisioningProfile provisioningProfilesWithPath:profilePath];
             
-            dispatch_semaphore_wait(addSemaphore, DISPATCH_TIME_FOREVER);
             [array addObject:profile];
-            dispatch_semaphore_signal(addSemaphore);
         }];
 
         dispatch_async(dispatch_get_main_queue(), ^{
