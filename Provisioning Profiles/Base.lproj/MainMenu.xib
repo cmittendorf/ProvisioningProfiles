@@ -43,6 +43,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="2LA-UK-d0q"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="KeV-WB-dl0">
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="SE5-3H-gLX" id="zvC-TI-FQB"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Check for Updates…" id="GgO-b0-1lP">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -235,14 +240,14 @@
                     <splitView focusRingType="none" autosaveName="splitDivider" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHY-MX-tOy">
                         <rect key="frame" x="0.0" y="32" width="770" height="381"/>
                         <subviews>
-                            <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="MSd-jS-G90">
+                            <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="MSd-jS-G90">
                                 <rect key="frame" x="0.0" y="0.0" width="374" height="381"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="VRO-GB-HMn">
                                     <rect key="frame" x="1" y="17" width="238" height="117"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" autosaveName="" headerView="h8B-x5-mcs" id="pfV-my-fEb">
+                                        <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" autosaveName="" headerView="h8B-x5-mcs" id="pfV-my-fEb" customClass="CMQuickLookTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -283,7 +288,7 @@
                                                     </connections>
                                                 </tableColumn>
                                                 <tableColumn editable="NO" width="79" minWidth="10" maxWidth="3.4028234663852886e+38" id="BrE-B2-QMu">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="App ID Name">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="App Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -322,7 +327,7 @@
                                     </connections>
                                 </tableHeaderView>
                             </scrollView>
-                            <scrollView focusRingType="none" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QRq-6l-rG9">
+                            <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QRq-6l-rG9">
                                 <rect key="frame" x="375" y="0.0" width="395" height="381"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="WkW-yc-Qql">
@@ -333,10 +338,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="238" height="630"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="395" height="381"/>
+                                            <size key="minSize" width="393" height="379"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="395" height="381"/>
+                                            <size key="minSize" width="393" height="379"/>
                                             <size key="maxSize" width="739" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -395,7 +400,7 @@
                     <constraint firstItem="SHY-MX-tOy" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="zLO-DB-93H"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="Rsy-ee-R4g">
+            <toolbar key="toolbar" implicitIdentifier="4316BFB2-BC22-4B48-A991-21710AB6DF8E" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="Rsy-ee-R4g">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="T6B-Vk-RAl"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="g1l-Fv-0St"/>
@@ -436,23 +441,20 @@
                             </searchFieldCell>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="82F3DD0D-6456-4E3E-83EB-BD4274290C8C" label="Show in Finder" paletteLabel="Show in Finder" image="NSQuickLookTemplate" id="MXr-Ga-RAr">
+                    <toolbarItem implicitItemIdentifier="82F3DD0D-6456-4E3E-83EB-BD4274290C8C" label="Show in Finder" paletteLabel="Show in Finder" image="finder" id="MXr-Ga-RAr">
                         <nil key="toolTip"/>
                         <size key="minSize" width="48" height="28"/>
                         <size key="maxSize" width="48" height="48"/>
                         <button key="view" verticalHuggingPriority="750" id="ElP-5V-5sb">
                             <rect key="frame" x="0.0" y="14" width="48" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6jP-0J-z1p">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="finder" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6jP-0J-z1p">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="showSelectedProfileInFinder:" target="Voe-Tx-rLC" id="N8d-mk-PIO"/>
-                            </connections>
                         </button>
                         <connections>
-                            <action selector="showSelectedProfileInFinder:" target="Voe-Tx-rLC" id="sbS-pE-ub6"/>
+                            <action selector="showSelectedProfileInFinder:" target="Voe-Tx-rLC" id="Oxg-t6-icA"/>
                             <binding destination="w9r-FN-nna" name="enabled" keyPath="canRemove" id="0JZ-W3-BVE"/>
                         </connections>
                     </toolbarItem>
@@ -467,13 +469,27 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="moveSelectedProfileToTrash:" target="Voe-Tx-rLC" id="dBj-V0-9i0"/>
-                            </connections>
                         </button>
                         <connections>
-                            <action selector="moveSelectedProfileToTrash:" target="Voe-Tx-rLC" id="bqN-As-ueA"/>
+                            <action selector="moveSelectedProfileToTrash:" target="Voe-Tx-rLC" id="qNn-9T-9kC"/>
                             <binding destination="w9r-FN-nna" name="enabled" keyPath="canRemove" id="YEG-kl-Eur"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="220F17A9-E76C-4FE8-BC6B-A74C95B9A2E0" label="QuickLook" paletteLabel="QuickLook" image="NSQuickLookTemplate" id="0Zb-vb-16s">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="48" height="28"/>
+                        <size key="maxSize" width="48" height="53"/>
+                        <button key="view" verticalHuggingPriority="750" id="6M9-5f-daK">
+                            <rect key="frame" x="0.0" y="14" width="48" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BnQ-hV-jVh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="quicklookSelectedProfile:" target="Voe-Tx-rLC" id="1rx-Au-u2x"/>
+                            <binding destination="w9r-FN-nna" name="enabled" keyPath="canRemove" id="hID-Kb-nAg"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2A0609E6-E8B3-4E8A-8A17-FAC923BA7070" label="Refresh" paletteLabel="Refresh" image="NSRefreshTemplate" id="gRe-mW-G7q">
@@ -494,12 +510,16 @@
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
+                    <toolbarItem reference="T6B-Vk-RAl"/>
                     <toolbarItem reference="J1Q-oH-EP2"/>
                     <toolbarItem reference="g1l-Fv-0St"/>
-                    <toolbarItem reference="OQF-AW-ONf"/>
                     <toolbarItem reference="MXr-Ga-RAr"/>
+                    <toolbarItem reference="0Zb-vb-16s"/>
+                    <toolbarItem reference="T6B-Vk-RAl"/>
+                    <toolbarItem reference="OQF-AW-ONf"/>
                     <toolbarItem reference="T6B-Vk-RAl"/>
                     <toolbarItem reference="gRe-mW-G7q"/>
+                    <toolbarItem reference="T6B-Vk-RAl"/>
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="120" y="192.5"/>
@@ -527,7 +547,7 @@
             </items>
             <point key="canvasLocation" x="491" y="-136.5"/>
         </menu>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="4cR-TS-vMN">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="4cR-TS-vMN" userLabel="Progress Sheet">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="340" height="98"/>
@@ -561,12 +581,51 @@
                     <constraint firstItem="jVE-dj-9RW" firstAttribute="top" secondItem="h7g-d9-L9E" secondAttribute="bottom" constant="8" id="zjl-wJ-hGu"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="443.5" y="599"/>
+            <point key="canvasLocation" x="60" y="459"/>
         </window>
+        <window identifier="SettingsWindow" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="SE5-3H-gLX" userLabel="Preferences Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="229" y="1094" width="360" height="82"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="avK-cb-zip">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-XU-MGn">
+                        <rect key="frame" x="20" y="40" width="320" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="Ipj-da-xR4"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Provisioning Profiles Path" drawsBackground="YES" id="jIz-vl-2rJ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="9OU-RA-Mru" name="value" keyPath="values.kCMProvisioningProfilesPath" id="fvv-yk-FgE">
+                                <dictionary key="options">
+                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TpI-XU-MGn" firstAttribute="leading" secondItem="avK-cb-zip" secondAttribute="leading" constant="20" id="6qm-3D-fpk"/>
+                    <constraint firstAttribute="bottom" secondItem="TpI-XU-MGn" secondAttribute="bottom" constant="40" id="QpX-tV-7nB"/>
+                    <constraint firstItem="TpI-XU-MGn" firstAttribute="top" secondItem="avK-cb-zip" secondAttribute="top" constant="20" id="WLm-Vb-S2j"/>
+                    <constraint firstAttribute="trailing" secondItem="TpI-XU-MGn" secondAttribute="trailing" constant="20" id="tjX-4x-fAf"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="60" y="645"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="9OU-RA-Mru"/>
     </objects>
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="finder" width="28" height="28"/>
         <image name="trashcan" width="28" height="28"/>
     </resources>
 </document>

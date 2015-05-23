@@ -10,9 +10,11 @@
 #import "CMProvisioningProfilesManager.h"
 #import "CMProvisioningProfile.h"
 #import "NSTextView+SoftWrap.h"
+#import "NSDictionary+JSON.h"
+#import "NSTask+SimpleCommand.h"
 
 
-@interface AppDelegate () <NSTableViewDelegate, CMProvisioningProfilesManagerDelegate>
+@interface AppDelegate () <NSTableViewDelegate, CMProvisioningProfilesManagerDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSWindow *progressWindow;
@@ -24,6 +26,7 @@
 @property (assign) IBOutlet NSButton *reloadProfilesButton;
 
 @property (nonatomic) CMProvisioningProfilesManager *provisioningProfilesManager;
+@property (strong) QLPreviewPanel *previewPanel;
 
 @end
 
@@ -42,10 +45,6 @@
     [self.provisioningProfilesManager reloadProfiles];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // clean up
-}
-
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
@@ -60,6 +59,14 @@
     CMProvisioningProfile *profile = [[self.profilesController selectedObjects] firstObject];
     NSString *path = [profile valueForKey:@"path"];
     [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:nil];
+}
+
+- (IBAction)quicklookSelectedProfile:(id)sender {
+    if ([QLPreviewPanel sharedPreviewPanelExists] && [[QLPreviewPanel sharedPreviewPanel] isVisible]) {
+        [[QLPreviewPanel sharedPreviewPanel] orderOut:nil];
+    } else {
+        [[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:nil];
+    }
 }
 
 - (IBAction)moveSelectedProfileToTrash:(id)sender {
@@ -110,6 +117,62 @@
 
 - (void)profilesUpdateComplete:(CMProvisioningProfilesManager *)provisioningProfilesManager {
     [self updateUIStatusDisabled:NO];
+}
+
+
+#pragma mark - Quick Look panel support
+
+- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel {
+    return YES;
+}
+
+- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel {
+    self.previewPanel = panel;
+    self.previewPanel.delegate = self;
+    self.previewPanel.dataSource = self;
+}
+
+- (void)endPreviewPanelControl:(QLPreviewPanel *)panel {
+    self.previewPanel = nil;
+}
+
+#pragma mark - QLPreviewPanelDataSource
+
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel {
+    return 1;
+}
+
+- (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index {
+    return [[self.profilesController selectedObjects] firstObject];
+}
+
+#pragma mark - QLPreviewPanelDelegate
+
+- (BOOL)previewPanel:(QLPreviewPanel *)panel handleEvent:(NSEvent *)event {
+    // redirect all key down events to the table view
+    if ([event type] == NSKeyDown) {
+        [self.tableView keyDown:event];
+        return YES;
+    }
+    return NO;
+}
+
+// This delegate method provides the rect on screen from which the panel will zoom.
+- (NSRect)previewPanel:(QLPreviewPanel *)panel sourceFrameOnScreenForPreviewItem:(id <QLPreviewItem>)item {
+    NSInteger index = [[self.profilesController arrangedObjects] indexOfObject:item];
+    if (index == NSNotFound) {
+        return NSZeroRect;
+    }
+    
+    NSRect rowRect = [self.tableView rectOfRow:index];
+    NSRect visibleRect = [self.tableView visibleRect];
+    
+    if (!NSIntersectsRect(visibleRect, rowRect)) {
+        return NSZeroRect;
+    }
+
+    NSRect rect = [self.tableView convertRect:rowRect toView:nil];
+    return [self.window convertRectToScreen:rect];
 }
 
 @end

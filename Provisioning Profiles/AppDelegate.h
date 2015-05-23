@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Christian Mittendorf. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
+@import Quartz;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
-
+- (IBAction)quicklookSelectedProfile:(id)sender;
 @end
 
