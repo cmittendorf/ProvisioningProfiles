@@ -11,7 +11,6 @@
 
 @interface CMProvisioningProfilesManager ()
 @property (nonatomic) NSString *path;
-@property (nonatomic) dispatch_queue_t concurrent_queue;
 @property (nonatomic) dispatch_queue_t background_queue;
 @end
 
@@ -29,7 +28,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.concurrent_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         self.background_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
         self.path = [@"~/Library/MobileDevice/Provisioning Profiles/" stringByExpandingTildeInPath];
         self.profiles = @[];
@@ -41,6 +39,8 @@
     [self.delegate startUpdatingProfiles:self];
     dispatch_async(self.background_queue, ^{
         NSFileManager *fm = [NSFileManager defaultManager];
+        dispatch_semaphore_t addSemaphore = dispatch_semaphore_create(1);
+
         NSArray *files = [[fm contentsOfDirectoryAtPath:self.path error:nil] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.pathExtension == 'mobileprovision' || self.pathExtension == 'provisionprofile'"]];
         
         NSMutableArray *array = [NSMutableArray array];
@@ -54,9 +54,9 @@
             NSString *path = [self.path stringByAppendingPathComponent:filename];
             CMProvisioningProfile *profile = [CMProvisioningProfile provisioningProfilesWithPath:path];
             
-            dispatch_barrier_async(self.concurrent_queue, ^{
-                [array addObject:profile];
-            });
+            dispatch_semaphore_wait(addSemaphore, DISPATCH_TIME_FOREVER);
+            [array addObject:profile];
+            dispatch_semaphore_signal(addSemaphore);
         }];
 
         dispatch_async(dispatch_get_main_queue(), ^{
