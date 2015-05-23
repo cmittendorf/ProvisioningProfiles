@@ -10,10 +10,8 @@
 
 @implementation NSTextView (SoftWrap)
 
-- (void)setWrapsText:(BOOL)wraps
-{
-	if(wraps == NO)
-    {
+- (void)setWrapsText:(BOOL)wraps {
+	if(wraps == NO) {
 		NSSize bigSize = NSMakeSize(FLT_MAX, FLT_MAX);
         
 		[[self enclosingScrollView] setHasHorizontalScroller:YES];
